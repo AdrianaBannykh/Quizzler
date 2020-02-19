@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         
         updateUI()
     }
-
+    //function for press button
     @IBAction func answerButtonPressed(_ sender: UIButton) {
         questionNumber += 1
         updateUI()
