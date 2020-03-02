@@ -13,8 +13,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var progressBar: UIProgressView!
     
-    @IBOutlet weak var trueButton: UIButton!
-    @IBOutlet weak var falseButton: UIButton!
+    @IBOutlet weak var choice1Button: UIButton!
+    @IBOutlet weak var choice2Button: UIButton!
+    @IBOutlet weak var choice3Button: UIButton!
     @IBOutlet weak var scoreLabel: UILabel!
     
     //создаем экземпляр или новую копию нашего quizBrain в верхней части контроллера представления, тперь можем использовать QuizBrain внутри нашего контроллера
@@ -32,28 +33,33 @@ class ViewController: UIViewController {
        
         
         let userAnswer = sender.currentTitle! //True, False
-        let userGotItRight = quizBrain.checkAnswer(userAnswer)
+        
+        /*let userGotItRight = quizBrain.checkAnswer(userAnswer)
         
         if userGotItRight {
             sender.backgroundColor = UIColor.green
         } else {
             sender.backgroundColor = UIColor.red
         }
-        
+        */
         quizBrain.nextQuestion()
         
         Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
         
-        //updateUI()
+        updateUI()
     }
     
     @objc func updateUI() {
         //questionLabel.text = quiz[questionNumber].text
         questionLabel.text = quizBrain.getQuestionText()
+        choice1Button.setTitle("Button-1", for: .normal)
+        choice1Button.setTitle("Button-1", for: .normal)
+        choice1Button.setTitle("Button-1", for: .normal)
         progressBar.progress = quizBrain.getProgress()
         scoreLabel.text = "Score \(quizBrain.getScore())"
-        trueButton.backgroundColor = UIColor.clear
-        falseButton.backgroundColor = UIColor.clear
+        choice1Button.backgroundColor = UIColor.clear
+        choice2Button.backgroundColor = UIColor.clear
+        choice3Button.backgroundColor = UIColor.clear
         //progressBar.progress = Float(questionNumber+1)/Float(quiz.count)
     }
     
@@ -61,4 +67,5 @@ class ViewController: UIViewController {
     
     
 }
+
 
